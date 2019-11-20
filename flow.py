@@ -8,7 +8,14 @@ import socket
 #Доделать colorama
 count = 0
 colorama.init(autoreset=True)
+def clean():
+    if os.name == 'nt':
+        clear = os.system('cls')
+    else:
+        clear = os.system('clear')
+clean()
 def banner():
+    clean()
     print(colorama.Fore.BLUE+'''
 \t________________                  
 \t___  ____/___  /______ ___      __
@@ -19,11 +26,6 @@ def banner():
 ''')
     print('\n')
 banner()
-def clean():
-    if os.name == 'nt':
-        clear = os.system('cls')
-    else:
-        clear = os.system('clear')
 def check_connection():
     clean()
     banner()

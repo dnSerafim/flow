@@ -79,10 +79,6 @@ banner()
 print(colorama.Fore.GREEN+'\t    Loading of botlist...')
 try:
     logs = open('bots.fb','r')
-    if logs.read() == '':
-        print(colorama.Fore.RED+'\tEnter accounts in bots.fb!')
-        sleep(3)
-        sys.exit()
 except FileNotFoundError:
     clean()
     banner()

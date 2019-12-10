@@ -1,3 +1,4 @@
+#-*-coding:utf8-*-
 import smtplib
 import random
 from time import sleep
@@ -5,17 +6,9 @@ import sys
 import colorama
 import os
 import socket
-#Доделать colorama
 count = 0
 colorama.init(autoreset=True)
-def clean():
-    if os.name == 'nt':
-        clear = os.system('cls')
-    else:
-        clear = os.system('clear')
-clean()
 def banner():
-    clean()
     print(colorama.Fore.BLUE+'''
 \t________________                  
 \t___  ____/___  /______ ___      __
@@ -26,6 +19,11 @@ def banner():
 ''')
     print('\n')
 banner()
+def clean():
+    if os.name == 'nt':
+        clear = os.system('cls')
+    else:
+        clear = os.system('clear')
 def check_connection():
     clean()
     banner()
@@ -83,8 +81,13 @@ except FileNotFoundError:
     clean()
     banner()
     print(colorama.Fore.RED+'\t    Botlist not found')
-    
 botlogs = logs.read().split(',')
+if botlogs[0] == '':
+    clean()
+    banner() 
+    print(colorama.Fore.RED+'\t     Botlist is clear!')
+    sleep(5)
+    sys.exit()
 passwords = []
 logins = []
 alls = []
